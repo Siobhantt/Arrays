@@ -10,28 +10,39 @@ public class Ej5 {
 	 */
 	public static void main(String[] args) {
 
-		int numUser = 0;
-		int tabla[] = new int[10];
-		int max = 0;
-		int min = 0;
+		double numUser;//El numero que leeremos
+		double numReales[] = new double[10];//la tabla de longitud 10
+		
 
 		Scanner lee = new Scanner(System.in);
-
-		for (int i = 0; i < tabla.length; i++) {
-			System.out.println("Por favor introduzca un numero: ");
-		numUser = lee.nextInt();
-
-		for (int valor : tabla) {
-			if (valor > max) {
-				max = valor;
+		System.out.println("Por favor introduzca 10 numeros separados por enter.");
+		
+		for (int i =0; i<numReales.length; i++) {//con este for asignamos a cada posicion de la tabla el numero introducido por el user
+			numUser = lee.nextDouble(); 
+		numReales[i] = numUser; 
+		}
+		
+		double min = numReales[0]; 
+		double max= numReales[0];
+		
+		/*O
+		double max = Double.MIN_VALUE
+		double min = Double.MAX_VALUE
+		*/
+		for(double i : numReales) {//con este for extendido, recorremos la tabla y comparamos la i con el maximo que es la primera posicion
+			
+			if (i > max) {
+				max = i;
 			}
-			if (valor < min) {
-				min = valor;
+			if (i < min) {
+				min = i;
 			}
 		}
+		//una vez terminada de recorre la tabla imprimimos el minimo y el maximo
+		System.out.println("El valor maximo de la tabla es: " + max);
+		System.out.println("El valor minimo de la tabla es: " + min);
 	
+	//cerramos el scanner
+	lee.close();
 	}
-		System.out.println("El valor maximo de los valores introducidos es : " + max);
-		System.out.println("El valor minimo de los valores introducidos es : " + min);
-}
 }
